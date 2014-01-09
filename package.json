@@ -2,15 +2,35 @@
   "name": "gulp-wrap-define",
   "version": "0.0.1",
   "description": "Gulp plugin for wrapping files in a define statement",
-  "keywords": ["gulpplugin", "wrap", "require", "register", "define"],
   "main": "index.coffee",
   "license": "MIT",
-  "author": "Kevin Malakoff (https://github.com/kmalakoff)",
-  "repository": {"type": "git", "url": "https://github.com/kmalakoff/gulp-wrap-define.git"},
-  "engines": {"node": ">=0.8.0"},
+  "author": {
+    "name": "Kevin Malakoff",
+    "url": "https://github.com/kmalakoff"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kmalakoff/gulp-wrap-define.git"
+  },
+  "engines": {
+    "node": ">=0.8.0"
+  },
   "dependencies": {
-    "coffee-script": "*",
-    "gulp": "*",
-    "event-stream": "*"
-  }
+    "coffee-script": "*"
+  },
+  "devDependencies": {
+    "gulp": "~3.2.0"
+  },
+  "readme": "gulp-wrap-define\n================\n\nGulp plugin for wrapping files in a define statement.\n\nCreate a single JavaScript file with each file wrapped in `define('file_name', function(exports, require, module) { /* file content */ });`\n```\ngulp = require 'gulp'\ndefine = require 'gulp-wrap-define'\nconcat = require 'gulp-concat'\n\ngulp.task 'build', ->\n    gulp.src('./lib/**/*.js')\n    .pipe(define(root: './lib'))\n    .pipe(concat('your-js-library.js'))\n    .pipe(gulp.dest('./dist/'))\n```\n\n\nCreate a single JavaScript file with each file wrapped in `require.register('file_name', function(exports, require, module) { /* file content */ });` like Brunch.\n```\ngulp = require 'gulp'\ncoffee = require 'gulp-coffee'; gutil = require 'gulp-util'\ndefine = require 'gulp-wrap-define'\nconcat = require 'gulp-concat'\n\ngulp.task 'build', ->\n  gulp.src('./src/**/*.coffee').pipe(coffee({bare: true}).on('error', gutil.log))\n    .pipe(define({root: './src', define: 'require.register'}))\n    .pipe(concat('your-cs-library.js'))\n    .pipe(gulp.dest('./dist/'))\n```\n\n",
+  "readmeFilename": "README.md",
+  "bugs": {
+    "url": "https://github.com/kmalakoff/gulp-wrap-define/issues"
+  },
+  "homepage": "https://github.com/kmalakoff/gulp-wrap-define",
+  "_id": "gulp-wrap-define@0.0.1",
+  "dist": {
+    "shasum": "2520ba57486a3d2f9dd5973abf5bce750e1fcc05"
+  },
+  "_from": "gulp-wrap-define@*",
+  "_resolved": "https://registry.npmjs.org/gulp-wrap-define/-/gulp-wrap-define-0.0.1.tgz"
 }

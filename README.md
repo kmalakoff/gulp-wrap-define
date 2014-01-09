@@ -10,7 +10,7 @@ define = require 'gulp-wrap-define'
 concat = require 'gulp-concat'
 
 gulp.task 'build', ->
-    gulp.src('./lib/**/*.js')
+  gulp.src('./lib/**/*.js')
     .pipe(define(root: './lib'))
     .pipe(concat('your-js-library.js'))
     .pipe(gulp.dest('./dist/'))
