@@ -1,4 +1,6 @@
 path = require 'path'
+es = require 'event-stream'
+toText = require './lib/to_text'
 
 class GulpWrapDefine extends require('stream').Transform
   constructor: (@options={}) -> super {objectMode: true}
@@ -11,7 +13,10 @@ class GulpWrapDefine extends require('stream').Transform
     rel_path = file.path.replace(dir, '')
     define = @options.define or 'define'
 
-    file.contents = new Buffer("#{define}('#{rel_path.replace(path.extname(rel_path), '')}', function(exports, require, module) {\n#{String(file.contents)}\n});")
-    @push(file); callback()
+    file
+      .pipe(toText (text) =>
+        file.contents = new Buffer("#{define}('#{rel_path.replace(path.extname(rel_path), '')}', function(exports, require, module) {\n#{String(text)}\n});")
+        @push(file); callback()
+      )
 
-module.exports = (options) -> return new GulpWrapDefine(options)
+module.exports = (options) -> new GulpWrapDefine(options)

@@ -2,15 +2,15 @@
   "name": "gulp-wrap-define",
   "version": "0.0.1",
   "description": "Gulp plugin for wrapping files in a define statement",
+  "keywords": ["gulpplugin", "wrap", "require", "register", "define"],
   "main": "index.coffee",
   "license": "MIT",
   "author": "Kevin Malakoff (https://github.com/kmalakoff)",
   "repository": {"type": "git", "url": "https://github.com/kmalakoff/gulp-wrap-define.git"},
   "engines": {"node": ">=0.8.0"},
   "dependencies": {
-    "coffee-script": "*"
-  },
-  "devDependencies": {
-    "gulp": "~3.2.0"
+    "coffee-script": "*",
+    "gulp": "*",
+    "event-stream": "*"
   }
 }
