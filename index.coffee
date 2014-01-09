@@ -1,4 +1,5 @@
 path = require 'path'
+gutil = require 'gulp-util'
 es = require 'event-stream'
 toText = require './lib/to_text'
 
@@ -15,7 +16,12 @@ class GulpWrapDefine extends require('stream').Transform
 
     file
       .pipe(toText (text) =>
-        file.contents = new Buffer("#{define}('#{rel_path.replace(path.extname(rel_path), '')}', function(exports, require, module) {\n#{String(text)}\n});")
+        file = new gutil.File({
+          path: file.path
+          cwd: file.cwd
+          base: file.base
+          contents: new Buffer("#{define}('#{rel_path.replace(path.extname(rel_path), '')}', function(exports, require, module) {\n#{String(text)}\n});")
+        })
         @push(file); callback()
       )
 
