@@ -1,6 +1,6 @@
 {
   "name": "gulp-wrap-define",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Gulp plugin for wrapping files in a define statement",
   "main": "index.coffee",
   "license": "MIT",
@@ -17,7 +17,6 @@
   },
   "dependencies": {
     "coffee-script": "*",
-    "gulp": "*",
     "gulp-util": "*",
     "event-stream": "*"
   }
